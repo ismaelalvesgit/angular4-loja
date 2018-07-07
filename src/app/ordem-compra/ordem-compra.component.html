@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="ordem-compra">
+<div class="container mt-5 mb-5">
+  <div class="ordem-compra" *ngIf="idPedido == undefined">
     <form novalida>
     
       <h5>Sua Compra</h5>
@@ -69,7 +69,12 @@
       <div class="form-row">
 
         <div class="form-group col-md-6">
-          <input type="text" class="form-control is-invalid" placeholder="Endereço" autocomplete="off" minlength="5" required>
+          <input type="text" 
+          class="form-control is-invalid" 
+          placeholder="Endereço" autocomplete="off" 
+          minlength="5" 
+          required
+          >
           <div class="invalid-feedback">Endereço inválido</div>
         </div>
 
@@ -103,7 +108,19 @@
       </div>
 
       <hr />
-      <button type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
+      <button 
+      type="button" 
+      class="btn btn-primary btn-lg"
+      (click)="finalizarCompra()"
+      
+      >Cofirmar compra</button>
     </form>
   </div>
+
+  <div class="ordem-compra" *ngIf="idPedido !== undefined">
+
+    <app-ordem-compra-sucesso [idPedido]="idPedido" ></app-ordem-compra-sucesso>
+
+  </div>
+
 </div>
