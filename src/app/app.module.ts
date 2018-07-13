@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID ,NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { HttpModule} from '@angular/http'
@@ -35,6 +36,7 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTER)
   ],

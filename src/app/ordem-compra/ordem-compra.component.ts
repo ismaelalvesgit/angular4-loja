@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ordemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
 import { Subscriber } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ordem-compra',
@@ -10,18 +11,16 @@ import { Subscriber } from 'rxjs';
   providers:[ ordemCompraService ]
 })
 export class OrdemCompraComponent implements OnInit {
+
+  public formulario: FormGroup = new FormGroup({
+    'endereco': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    'numero': new FormControl(null, [Validators.required, Validators.minLength(1)]),
+    'complemento': new FormControl(null),
+    'formaPagamento': new FormControl(null, [Validators.required])
+  })
   
   public idPedido:number
 
-  public pedido:Pedido = new Pedido("","","","")
-
-  public endereco:string = 'rua padre galvão'
-
-  public numero:string = '41'
-
-  public complemento:string = 'branco'
-
-  public pagamento:string = 'boleto'
 
   constructor( private Ordemcompra:ordemCompraService ) { }
 
@@ -29,16 +28,15 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public finalizarCompra():void{
-
-  this.pedido.endereco = this.endereco
-
-  this.pedido.numero = this.numero
-
-  this.pedido.complemento = this.complemento
-
-  this.pedido.pagamento = this.pagamento
-
-  this. Ordemcompra.efetivarCompra(this.pedido)
+  
+  let pedido:Pedido = new Pedido(
+    this.formulario.value.endereco,  
+    this.formulario.value.numero,
+    this.formulario.value.complemento,
+    this.formulario.value.formaPagamento
+  )
+    
+  this. Ordemcompra.efetivarCompra(pedido)
     .subscribe(
       (idpedidio:number)=>{
         this.idPedido = idpedidio

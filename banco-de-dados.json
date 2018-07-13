@@ -194,81 +194,39 @@
       "id": 1
     },
     {
-      "endereco": "rua padre galvão",
+      "endereco": "padre galvão",
       "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
+      "complemento": "teste",
+      "pagamento": "debito",
       "id": 2
     },
     {
-      "endereco": "rua padre galvão",
+      "endereco": "141",
       "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
+      "complemento": "41",
+      "pagamento": "dinheiro",
       "id": 3
     },
     {
-      "endereco": "rua padre galvão",
+      "endereco": "padre galvão",
       "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
+      "complemento": "teste",
+      "pagamento": "dinheiro",
       "id": 4
     },
     {
-      "endereco": "rua padre galvão",
+      "endereco": "padre galvão",
       "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
+      "complemento": "41",
+      "pagamento": "debito",
       "id": 5
     },
     {
-      "endereco": "rua padre galvão",
+      "endereco": "teste",
       "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
+      "complemento": "teste",
+      "pagamento": "dinheiro",
       "id": 6
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 7
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 8
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 9
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 10
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 11
-    },
-    {
-      "endereco": "rua padre galvão",
-      "numero": "41",
-      "complemento": "branco",
-      "pagamento": "boleto",
-      "id": 12
     }
   ]
 }
