@@ -1,65 +1,46 @@
 <div class="container">
-  <div class="ordem-compra mt-5 mb-5" *ngIf="idPedido == undefined">
+  <div *ngIf="Carrinhoservice.exibirItems().length; else carrinhoVazio">
+  <div class="ordem-compra mt-5 mb-5" *ngIf="idPedido == undefined; else pedido">
     <form [formGroup]="formulario" novalidate  (ngSubmit)="finalizarCompra()">
     
       <h5>Sua Compra</h5>
       <hr />
 
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
-        <div class="form-group col-sm-1">
-          <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
-        </div>
-        <div class="form-group col-sm-6">
-          Super Burger
-          <br />
-          Rodízio de Mini-hambúrger com opção de entrada.
-        </div>
-
-        <div>
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-link">-</button>
-              1
-              <button type="button" class="btn btn-link">+</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group col-sm-3 d-flex justify-content-end">
-          29.90
-        </div>
-      </div>
       
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+      <div
+        *ngFor="let itens of itensCarrinho" 
+        class="form-row" 
+        style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
         <div class="form-group col-sm-1">
-          <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
+          <img [src]="itens.img.url" class="img-fluid">
         </div>
         <div class="form-group col-sm-6">
-          Estância das águas
+          {{ itens.titulo }}
           <br />
-          Diversão garantida com piscinas, trilhas e muito mais.
+          {{ itens.descricao_oferta }}
         </div>
 
         <div>
           <div class="row">
             <div class="col">
-              <button type="button" class="btn btn-link">-</button>
-              1
-              <button type="button" class="btn btn-link">+</button>
+              <button type="button" class="btn btn-link" (click)="diminuir(itens)" >-</button>
+              {{ itens.quantidade}}
+              <button type="button" class="btn btn-link" (click)="adicionar(itens)">+</button>
             </div>
           </div>
         </div>
 
         <div class="form-group col-sm-3 d-flex justify-content-end">
-          31.90
+          {{ itens.quantidade *  itens.valor | currency:'BRL' }}
         </div>
-      </div>
+      </div> <!--fim lop-->
       
       <div class="form-row">
         <div class="form-group col d-flex justify-content-end">
-          <h4>Total do pedido: 61.80</h4>
+          <h4>Total do pedido: {{ Carrinhoservice.totalCarrinho() | currency:'BRL' }}</h4>
         </div>
       </div>
+      
       <br />
 
       <h5>Dados de entrega</h5>
@@ -136,6 +117,13 @@
     </form>
   </div>
 </div>
-<div>
+</div><!-- fim If-->
+<ng-template #carrinhoVazio>
+  <div class="form-row d-flex justify-content-center" 
+  style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+  Seu carrinho está vazio. não perca tempo e aproveite as ofertas !!!!
+  </div>
+</ng-template>
+<ng-template #pedido>
   <app-ordem-compra-sucesso [idPedido]="idPedido"></app-ordem-compra-sucesso>
-</div>
+</ng-template>

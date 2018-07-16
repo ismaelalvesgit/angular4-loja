@@ -6,6 +6,8 @@ import localePt from '@angular/common/locales/pt';
 import { HttpModule} from '@angular/http'
 import { RouterModule } from '@angular/router'
 import { ROUTER } from './app.routes';
+import { CarrinhoService } from './carrinho.service';
+
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
@@ -40,7 +42,7 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
     HttpModule,
     RouterModule.forRoot(ROUTER)
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [ CarrinhoService,  { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

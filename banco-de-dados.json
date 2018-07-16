@@ -227,6 +227,13 @@
       "complemento": "teste",
       "pagamento": "dinheiro",
       "id": 6
+    },
+    {
+      "endereco": "rua padre galvão",
+      "numero": "41",
+      "complemento": "teste",
+      "pagamento": "dinheiro",
+      "id": 7
     }
   ]
 }

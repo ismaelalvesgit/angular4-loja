@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ofertaService } from '../ofertas.service';
+import { CarrinhoService } from '../carrinho.service';
 import { Oferta } from '../shared/ofertas.model';
 
 @Component({
@@ -16,7 +17,9 @@ export class OfertaComponent implements OnInit {
   constructor( 
     private route:ActivatedRoute,
     
-    private OfertaService:ofertaService  
+    private OfertaService:ofertaService,
+    
+    private CarrinhoService:CarrinhoService
 
   ) { }
 
@@ -33,6 +36,10 @@ export class OfertaComponent implements OnInit {
 
     })
     
+  }
+
+  public getOferta():void{
+    this.CarrinhoService.itemsCarrinho(this.oferta)
   }
 
 }
